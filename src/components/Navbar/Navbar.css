@@ -1,7 +1,14 @@
-.navbar {
+.container-fluid {
     background-color: white !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-brand img {
     width: 180px;
+}
+
+.nav-item {    
+    margin-inline: 20px;
 }
