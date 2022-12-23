@@ -1,3 +1,7 @@
+header {
+    border-bottom: 0.2px solid #a2a2a2;
+}
+
 .container-fluid {
     background-color: white !important;
     display: flex;
@@ -5,8 +9,13 @@
     align-items: center;
 }
 
+.navbar-brand {
+    margin: 0 !important;
+}
+
 .navbar-brand img {
     width: 180px;
+    margin: 0;
 }
 
 .nav-item {    
