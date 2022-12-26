@@ -10,7 +10,7 @@ function App() {
       </header>
       <body>
         <main>
-          <ItemListContainer  greeting='Prueba de greeting'/>
+          <ItemListContainer  greeting='Prueba de greeting' color='grey'/>
         </main>
       </body>
     </div>
