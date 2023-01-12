@@ -1,6 +1,9 @@
 import './ItemListContainer.css'
 import { useEffect, useState } from 'react'
 import { getProducts } from '../../asyncMock'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = ({ greeting, color }) => {
     const [products, setProducts] = useState([]);
@@ -17,24 +20,48 @@ const ItemListContainer = ({ greeting, color }) => {
             setLoading(false)
         })
     }, [])
+
     console.log(products);
 
     if(loading) {
-        return <h1>Cargando...</h1>;
+        return (
+            <div>
+                <h2 className='h2loading'>Cargando</h2>
+                <div className='lds-dual-ring'></div>
+            </div>
+        );
     }
 
     if(error) {
-        return <h1>Hubo un error al conectarse con la base de datos.</h1>;
+
+        const rejectApi = () => {
+            toast.error('Hubo un problema al conectarse con la base de datos', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        }
+        return (            
+            <div>            
+                <ToastContainer />
+            </div>
+        );
     }
   
     return (
         <div>
             <h1 style={{color}}>{greeting}</h1>
-            <ul>
-                {products.map(prod => <li>{prod.title}</li>)}
-            </ul>
+            <ItemList products={products} />            
         </div>
     )
+    
 }
+
+
 
 export default ItemListContainer
