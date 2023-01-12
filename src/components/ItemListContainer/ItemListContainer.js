@@ -40,7 +40,7 @@ const ItemListContainer = ({ greeting, color }) => {
             setLoading(false)
         })
     }, [categoryId])
-
+    console.log(products);
    
    if(loading) {
         return (
