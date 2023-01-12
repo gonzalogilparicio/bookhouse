@@ -10,6 +10,18 @@ const ItemListContainer = ({ greeting, color }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     
+    const rejectApi = () => {
+        toast.error('Hubo un problema al conectarse con la base de datos', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+    }
     
     useEffect (() => {
         setLoading(true);
@@ -33,20 +45,9 @@ const ItemListContainer = ({ greeting, color }) => {
         );
     }
 
-    if(error) {
-
-        const rejectApi = () => {
-            toast.error('Hubo un problema al conectarse con la base de datos', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-        }
+    if(error) {            
+        
+        rejectApi()
         return (            
             <div>            
                 <ToastContainer />

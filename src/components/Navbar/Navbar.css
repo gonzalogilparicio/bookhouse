@@ -1,4 +1,4 @@
-header {
+.navbar {
     border-bottom: 0.2px solid #a2a2a2;
 }
 
@@ -10,7 +10,7 @@ header {
 }
 
 .navbar-brand {
-    margin: 0 !important;    
+    margin: 0 !important;
 }
 
 .navbar-brand img {
@@ -18,11 +18,24 @@ header {
     margin: 0;
 }
 
-.nav-item {    
+.nav-item {
     margin-inline: 20px;
 }
 
-.ActiveOption {    
+.navbar-nav {
+    --bs-nav-link-padding-y: 0 !important;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.ActiveOption {
     color: black;
     text-decoration: underline;
+    padding: 0px 8px;
+}
+
+.ActiveOption:hover {
+    color: black;
 }
