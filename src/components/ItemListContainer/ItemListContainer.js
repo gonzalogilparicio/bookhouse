@@ -4,7 +4,7 @@ import { getProducts, getProductsByCategory} from "../../asyncMock"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemList from '../ItemList/ItemList';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting, color }) => {
@@ -65,11 +65,11 @@ const ItemListContainer = ({ greeting, color }) => {
         <div className='ItemListContainer'>
             <h1 style={{color}}>{greeting}</h1>
             <div className='CategoryButtons'>
-                <Link to={`/category/narrativa`} className='CategoryButton'>Narrativa</Link>
-                <Link to={`/category/autoayuda`} className='CategoryButton'>Autoayuda</Link>
-                <Link to={`/category/historia`} className='CategoryButton'>Historia</Link>
-                <Link to={`/category/infantiles`} className='CategoryButton'>Infantiles</Link>
-                <Link to={`/category/psicología`} className='CategoryButton'>Psicología</Link>
+                <NavLink to={`/category/narrativa`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Narrativa</NavLink>
+                <NavLink to={`/category/autoayuda`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Autoayuda</NavLink>
+                <NavLink to={`/category/historia`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Historia</NavLink>
+                <NavLink to={`/category/infantiles`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Infantiles</NavLink>
+                <NavLink to={`/category/psicología`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Psicología</NavLink>
             </div>
             <ItemList products={products} />            
         </div>
