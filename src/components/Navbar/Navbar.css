@@ -10,7 +10,7 @@ header {
 }
 
 .navbar-brand {
-    margin: 0 !important;
+    margin: 0 !important;    
 }
 
 .navbar-brand img {
@@ -20,4 +20,9 @@ header {
 
 .nav-item {    
     margin-inline: 20px;
+}
+
+.ActiveOption {    
+    color: black;
+    text-decoration: underline;
 }

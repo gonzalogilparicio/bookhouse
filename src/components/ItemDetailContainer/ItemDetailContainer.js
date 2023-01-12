@@ -26,12 +26,12 @@ const ItemDetailContainer = () => {
                 <h2 className='h2loading'>Cargando</h2>
                 <div className='lds-dual-ring'></div>
             </div>
-        )
+        );
     }
 
     return(
         <div className='ItemDetailContainer' >
-            <h1>Detalle {product.name}</h1>
+            <h1>Detalle {product.title}</h1>
             <ItemDetail {...product}/>
         </div>
     )
