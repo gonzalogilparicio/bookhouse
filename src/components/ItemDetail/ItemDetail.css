@@ -1,11 +1,8 @@
 .CardItemDetail {
-    width: 500px;
+    width: 150px;
     padding: 30px;
     margin: 30px;
     font-size: 10px;
-    background-color: papayawhip;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
 }
 
 .ContainerItem {
@@ -17,7 +14,9 @@
 
 .ItemHeader {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 25px;
 }
 
 .Info {
@@ -48,8 +47,9 @@
 }
 
 .ItemImg {
-    width: 100px;
-    height: 100px;
     object-fit: cover;
     object-position: center;
+    width: 126.719px;
+    height: 198.948px;
+    padding: auto;
 }
