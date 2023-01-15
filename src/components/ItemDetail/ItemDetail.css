@@ -75,6 +75,7 @@
     height: 438, 87px;
     padding: auto;
     margin-right: 80px;
+    box-shadow: 0 4px 8px 0 #828282, 0 6px 20px 0 rgba(151, 151, 151, 0.948);
 }
 
 .ItemDetailPublishingHouse {

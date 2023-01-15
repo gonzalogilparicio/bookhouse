@@ -57,11 +57,11 @@
     object-position: center;
     width: 126.719px;
     height: 198.948px;
-    /* padding: auto; */
+    transition: all 0.3s ease 0s;
     margin: 0;
+    box-shadow: 0 4px 8px 0 #828282, 0 6px 20px 0 rgba(151, 151, 151, 0.948);
 }
 
-/* .ItemFooter {
-    display: flex;
-    justify-content: center;
-} */
+.ItemImg:hover {
+    transform: scale(1.01);
+}
