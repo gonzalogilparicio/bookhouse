@@ -3,36 +3,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 400px;
     margin: auto;
 }
 
 .Button {
+    border-color: black;
     text-decoration: none;
-    border-radius: 25;
-    margin: 0 30px;
+    /* border-radius: 25;
+    margin: 0 30px; */
     width: auto;
-    padding: 12px;
+    padding: 4px;
     font-size: 8px;
-    background: #8C30F5;
-    border-radius: 8px;
+    background: #ffffff;
+    /* border-radius: 8px; */
     display: flex;
     align-self: center;
     flex-grow: 0;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #FFFFFF;
-    border: none;
-    border-style: none;
+    color: #000000;
+    border: 1.2px solid black;
     cursor: pointer;
     outline: inherit;
     font-size: larger;
 }
 
-.Number {
-    font-size: 20px;
-    padding: 20px;
+.NumberItemCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px;
     margin: 0;
     order: 1;
 }
@@ -40,4 +43,42 @@
 .Controls {
     display: flex;
     justify-content: center;
+}
+
+.ButtonAgregar {
+    margin-top: 10px;
+    background-color: #a5d8ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 20px;
+    margin-block: 10px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    color: black;
+}
+
+.ButtonDecInc {
+    margin-top: 10px;
+    background-color: #a5d8ff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 4px 8px;
+    margin-block: 10px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    color: black;
+}
+
+.ButtonAgregar:hover {
+    background-color: #7ec7ff;
+    color: black;
+}
+
+.ButtonDecInc:hover {
+    background-color: #7ec7ff;
+    color: black;
 }
