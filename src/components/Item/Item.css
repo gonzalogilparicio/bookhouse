@@ -1,11 +1,7 @@
 .CardItem {
     width: 150px;
-    padding: 30px;
-    margin: 30px;
-    font-size: 10px;
-    /* background-color: papayawhip; */
-    /* border: 1px solid #e1e1e1;
-    border-radius: 10px; */
+    margin: 50px 20px 0 20px;
+    font-size: 10px;    
 }
 
 .Header {
@@ -61,7 +57,8 @@
     object-position: center;
     width: 126.719px;
     height: 198.948px;
-    padding: auto;
+    /* padding: auto; */
+    margin: 0;
 }
 
 /* .ItemFooter {

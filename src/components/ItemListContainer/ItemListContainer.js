@@ -1,6 +1,6 @@
 import './ItemListContainer.css'
 import { useEffect, useState } from 'react'
-import { getProducts, getProductsByCategory} from "../../asyncMock"
+import { getProducts, getProductsByCategory } from "../../asyncMock"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemList from '../ItemList/ItemList';
@@ -11,9 +11,9 @@ const ItemListContainer = ({ greeting, color }) => {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-    
-    const { categoryId } = useParams();    
-    
+
+    const { categoryId } = useParams();
+
     const rejectApi = () => {
         toast.error('Hubo un problema al conectarse con la base de datos', {
             position: "bottom-right",
@@ -24,12 +24,12 @@ const ItemListContainer = ({ greeting, color }) => {
             draggable: true,
             progress: undefined,
             theme: "dark",
-            });
+        });
     }
 
-    
-    
-    useEffect (() => {
+
+
+    useEffect(() => {
         setLoading(true);
         const asyncFunction = categoryId ? getProductsByCategory : getProducts;
         asyncFunction(categoryId).then(productsFromApi => {
@@ -41,8 +41,8 @@ const ItemListContainer = ({ greeting, color }) => {
         })
     }, [categoryId])
     console.log(products);
-   
-   if(loading) {
+
+    if (loading) {
         return (
             <div>
                 <h2 className='h2loading'>Cargando</h2>
@@ -51,19 +51,19 @@ const ItemListContainer = ({ greeting, color }) => {
         );
     }
 
-    if(error) {            
-        
+    if (error) {
+
         rejectApi()
-        return (            
-            <div>            
+        return (
+            <div>
                 <ToastContainer />
             </div>
         );
     }
-  
+
     return (
         <div className='ItemListContainer'>
-            <h1 style={{color}}>{greeting}</h1>
+            <h1 style={{ color }}>{greeting}</h1>
             <div className='CategoryButtons'>
                 <NavLink to={`/category/narrativa`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Narrativa</NavLink>
                 <NavLink to={`/category/autoayuda`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Autoayuda</NavLink>
@@ -71,10 +71,10 @@ const ItemListContainer = ({ greeting, color }) => {
                 <NavLink to={`/category/infantiles`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Infantiles</NavLink>
                 <NavLink to={`/category/psicología`} className={({ isActive }) => isActive ? 'ActiveOptionCategoryButtons' : 'CategoryButton'}>Psicología</NavLink>
             </div>
-            <ItemList products={products} />            
+            <ItemList products={products} />
         </div>
     )
-    
+
 }
 
 

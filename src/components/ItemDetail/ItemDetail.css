@@ -26,11 +26,11 @@
 
 .ItemDetailAuthor {
     font-size: 20px;
-    color:rgb(127, 127, 127);
+    color: rgb(127, 127, 127);
 }
 
 .ItemDetailPrice {
-    color:rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     font-size: 18px;
 }
 
@@ -81,7 +81,10 @@
     margin-top: 20px;
 }
 
-.ItemDetailPublishingHouse, .ItemDetailISBN, .ItemDetailPages, .ItemDetailReview {
+.ItemDetailPublishingHouse,
+.ItemDetailISBN,
+.ItemDetailPages,
+.ItemDetailReview {
     font-size: 14px;
-    text-align: left;    
+    text-align: left;
 }
