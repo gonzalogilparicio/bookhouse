@@ -1,12 +1,13 @@
 import './CartWidget.css'
+import { Link } from 'react-router-dom'
 
-const CartWidget = () => {
-    return (
-        <div className="container">
+const CartWidget = ({ totalQuantity }) => {
+    return(
+        <div className="CartWidget">
             <img src='/assets/img/cart.svg' alt='cart svg image' />
-            <span>0</span>
+            { totalQuantity }
         </div>
-    )
+    );
 }
 
 export default CartWidget

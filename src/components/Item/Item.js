@@ -2,6 +2,7 @@ import './Item.css'
 import { Link } from 'react-router-dom'
 
 const Item = ({ id, title, author, img, price }) => {
+
     return (
         <article className="CardItem">
             <header className="Header">

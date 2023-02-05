@@ -1,18 +1,21 @@
 import './ItemListContainer.css'
-import { useEffect, useState } from 'react'
-import { getProducts, getProductsByCategory } from "../../asyncMock"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ItemList from '../ItemList/ItemList';
+import ItemList from '../ItemList/ItemList'
+import { useParams } from 'react-router-dom'
+import { useAsync } from '../../hooks/useAsync'
+import { useTitle } from '../../hooks/useTitle'
+import { getProducts } from '../../services/firebase/firestore/products'
 import { Link, NavLink } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting, color }) => {
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    useTitle('Todos los productos', [])
 
-    const { categoryId } = useParams();
+    const { categoryId } = useParams()
+
+    const getProductsWithCategory = () => getProducts(categoryId)
+
+    const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
 
     const rejectApi = () => {
         toast.error('Hubo un problema al conectarse con la base de datos', {
@@ -26,21 +29,6 @@ const ItemListContainer = ({ greeting, color }) => {
             theme: "dark",
         });
     }
-
-
-
-    useEffect(() => {
-        setLoading(true);
-        const asyncFunction = categoryId ? getProductsByCategory : getProducts;
-        asyncFunction(categoryId).then(productsFromApi => {
-            setProducts(productsFromApi)
-        }).catch(error => {
-            setError(true)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, [categoryId])
-    console.log(products);
 
     if (loading) {
         return (

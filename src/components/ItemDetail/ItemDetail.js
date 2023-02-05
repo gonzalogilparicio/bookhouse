@@ -1,15 +1,20 @@
 import './ItemDetail.css'
+import { useContext } from 'react'
 import ItemCount from '../ItemCount/ItemCount'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
+import { NotificationContext } from '../../notification/NotificationService'
 
 
 const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghouse, price, stock }) => {
-    const [quantity, setQuantity] = useState(0)
+    const { addItem, isInCart } = useContext(CartContext)
+    const setNotification = useContext(NotificationContext)
 
     const handleOnAdd = (quantity) => {
-        console.log(`Se agregó al carrito ${quantity} unidad/es del libro ${title}`)
-        setQuantity(parseInt(quantity))
+        console.log('agregue al carrito: ', quantity)
+        
+        addItem({ id, title, price, quantity})
+        setNotification('error',`Se agrego correctamente ${quantity} ${title}`, 5)
     }
 
     return (
@@ -36,9 +41,15 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
                     </p>
                 </section>
                 <div className='ItemDetailCounter'>
-                    {
-                        <ItemCount onAdd={handleOnAdd} stock={stock} />
-                    }
+                <footer className='ItemFooter'>
+                {
+                    isInCart(id) ? (
+                        <Link to='/cart'>Terminar compra</Link>
+                    ) : (
+                        <ItemCount stock={stock} onAdd={handleOnAdd} />
+                    )
+                }
+            </footer>
                 </div>
                 <h4 className='ItemDetailPublishingHouse'>
                     <span>Editorial:</span>{publishinghouse}
