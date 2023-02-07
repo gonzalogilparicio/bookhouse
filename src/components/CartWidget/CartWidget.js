@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const CartWidget = ({ totalQuantity }) => {
     return (
-        <Link to='/cart' className="CartWidget">
+        <Link to='/cart' className="CartWidgetNumber">
             <img src='/assets/img/cart.svg' alt='cart svg image' />
             {totalQuantity}
         </Link>

@@ -14,7 +14,7 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
         console.log('agregue al carrito: ', quantity)
         
         addItem({ id, title, price, quantity})
-        setNotification('error',`Se agrego correctamente ${quantity} ${title}`, 5)
+        setNotification('error',`Se agrego al carrito ${quantity} ${title}`, 5)
     }
 
     return (
@@ -44,7 +44,7 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
                 <footer className='ItemFooter'>
                 {
                     isInCart(id) ? (
-                        <Link to='/cart'>Terminar compra</Link>
+                        <Link to='/cart'><button className='ButtonTerminarCompra'>Terminar compra</button></Link>
                     ) : (
                         <ItemCount stock={stock} onAdd={handleOnAdd} />
                     )

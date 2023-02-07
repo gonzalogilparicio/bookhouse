@@ -21,12 +21,7 @@ const Item = ({ id, title, author, img, price }) => {
                 <h3 className="ItemAuthor">
                     {author}
                 </h3>
-            </section>
-            <section>
-                <p className="Info">
-                    Precio: ${price}
-                </p>
-            </section>
+            </section>            
         </article>
     )
 }

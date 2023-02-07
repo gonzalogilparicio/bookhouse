@@ -1,0 +1,19 @@
+.btn-del {
+    border: 2px solid;
+    border-radius: 8px;
+    color:white;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:8px;
+    background: #f8b629;
+    cursor:pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-del:hover {
+    background-color: #9da5d2;
+    text-decoration: none;
+    color: white;
+    border-color: white;
+}

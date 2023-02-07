@@ -4,9 +4,15 @@
 
 img {
     width: 16px;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 span {
     margin-right: 40px;
+}
+
+.CartWidgetNumber {
+    margin-right: 24px;
+    text-decoration: none !important;
+    color: black !important;
 }

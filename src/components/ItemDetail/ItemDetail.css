@@ -89,3 +89,22 @@
     font-size: 14px;
     text-align: left;
 }
+
+.ButtonTerminarCompra {
+    margin-top: 10px;
+    background-color: #a5d8ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 20px;
+    margin-block: 10px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    color: black;
+}
+
+.ButtonTerminarCompra:hover {
+    background-color: #7ec7ff;
+    color: black;
+}
