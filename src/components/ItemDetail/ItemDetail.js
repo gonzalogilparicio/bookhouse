@@ -13,7 +13,7 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
     const handleOnAdd = (quantity) => {
         console.log('agregue al carrito: ', quantity)
         
-        addItem({ id, title, price, quantity})
+        addItem({ id, title, price, quantity, img })
         setNotification('error',`Se agregó al carrito ${quantity} ${title}`, 5)
     }
 
