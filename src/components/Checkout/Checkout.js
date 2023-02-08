@@ -16,6 +16,7 @@ const Checkout = () => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
+    const [email2, setEmail2] = useState('')
 
     const navigate = useNavigate()
 
@@ -35,7 +36,7 @@ const Checkout = () => {
             const batch = writeBatch(db)
 
             const ids = cart.map(prod => prod.id)
-            console.log(ids)
+            
 
             const prodRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
 
@@ -60,19 +61,12 @@ const Checkout = () => {
             })
 
             if (outOfStock.length === 0) {
-                await batch.commit()
-                console.log(objOrder)
+                await batch.commit()                
                 const orderRef = collection(db, 'orders')
                 const orderAdded = await addDoc(orderRef, objOrder)
                 const { id } = orderAdded
                 setOrderId(id)
-                clearCart()
-
-                // setTimeout(() => {
-                //     navigate('/')
-                // }, 5000)
-
-                console.log(id)
+                clearCart()                
             } else {
                 console.error('productos fuera de stock')
             }
@@ -98,7 +92,7 @@ const Checkout = () => {
                 </div>
                 <div>
                     <h5 style={{ color: 'black', marginTop: '40px' }}>En breve recibirás un e-mail con los pasos a seguir</h5>
-                    <Link to='/'><p style={{ fontSize:'20px' ,marginTop: '90px', color: 'black', textDecoration: 'none' }} >Volver al inicio</p></Link>
+                    <Link to='/'><p style={{ fontSize: '20px', marginTop: '90px', color: 'black', textDecoration: 'none' }} >Volver al inicio</p></Link>
                 </div>
             </div>
 
@@ -116,11 +110,14 @@ const Checkout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (name === '' || email === '' || phone === '') {
+        if (name === '' || email === '' || phone === '' || email2 === '') {
             setNotification('error', `Todos los campos deben estar completos para poder finalizar su compra`, 5);
+        } else if (email != email2) {
+            setNotification('error', `Los mails no coinciden`, 5);
         } else {
             createOrder();
         }
+
     };
 
     return (
@@ -137,7 +134,11 @@ const Checkout = () => {
                     </div>
                     <br />
                     <div className="form-group">
-                        <input type="email" className="form-control" value={email} placeholder="E-Mail" onChange={(e) => setEmail(e.target.value)} required />
+                        <input type="email" className="form-control" value={email} placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} required />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <input type="email" className="form-control" value={email2} placeholder="Repetir E-mail" onChange={(e) => setEmail2(e.target.value)} required />
                     </div>
                     <br />
                     <button onClick={handleSubmit} type="submit" className="ButtonGenerarOrden">Generar orden</button>

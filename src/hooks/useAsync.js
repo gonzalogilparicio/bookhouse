@@ -6,7 +6,7 @@ export const useAsync = (asyncFunc, dependecies = []) => {
     const [loading, setLoading] = useState(true)
 
     if(!Array.isArray(dependecies)) {
-        console.error('No se paso un Array como dependecias al useAsync')
+        console.error('No se paso un Array como dependencias al useAsync')
         dependecies = []
     }
 
