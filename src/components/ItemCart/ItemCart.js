@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
+import './ItemCart.css'
 
 const ItemCart = ({ id, title, quantity, price, img }) => {
 
     const { removeItemCart } = useContext(CartContext)
-
+    
     return (
 
-        <div className="row align-items-center" style={{ color: "#9da5d2" }}>
+        <div className="row align-items-center" style={{ color: "black" }}>
 
             <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
                 <div className="bg-image hover-overlay hover-zoom ripple rounded" >
@@ -16,10 +17,10 @@ const ItemCart = ({ id, title, quantity, price, img }) => {
                 <p><strong>{title}</strong></p>
             </div>
 
-            <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                <p><span style={{ color: "#b0baf0" }}>Cantidad: </span><span style={{ color: "#9da5d2" }}>{quantity}</span> </p>
-                <p><span style={{ color: "#b0baf0" }}>Precio: </span><span style={{ color: "#9da5d2" }}>${price}</span> </p>
-                <p><span style={{ color: "#b0baf0" }}>Subtotal: </span><span style={{ color: "#9da5d2" }}>${price * quantity}</span> </p>
+            <div className="col-lg-5 DivCantidadPrecioSubtotal">
+                <p><span style={{ color: "black" }}>Cantidad: </span><span style={{ color: "black" }}>{quantity}</span> </p>
+                <p><span style={{ color: "black" }}>Precio: </span><span style={{ color: "black" }}>${price}</span> </p>
+                <p><span style={{ color: "black", marginRight: '24px' }}>Subtotal: </span><span style={{ color: "black" }}>${price * quantity}</span> </p>
             </div>
 
             <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">

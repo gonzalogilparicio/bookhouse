@@ -6,7 +6,7 @@ const CartContainer = () => {
     const { cart } = useContext(CartContext)
     return (
         <div>
-            <h4 style={{ color: "#9da5d2", marginTop: "20px" }}>Finaliza tu compra</h4>
+            <h4 style={{ color: "black", marginTop: "40px", fontSize:'40px' }}>Finalizá tu compra</h4>
             <CartList cart={cart} />
         </div>
     )

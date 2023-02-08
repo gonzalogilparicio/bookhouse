@@ -17,3 +17,25 @@
     color: white;
     border-color: white;
 }
+
+.ButtonLimpiarCarritoYRealizarCompra {
+    margin-top: 10px;
+    background-color: #a5d8ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 20px;
+    margin-block: auto;
+    margin-bottom: 25px;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    color: black;
+    width: 180px;
+    margin-inline: auto;
+}
+
+.ButtonLimpiarCarritoYRealizarCompra:hover {
+    background-color: #7ec7ff;
+    color: black;
+}

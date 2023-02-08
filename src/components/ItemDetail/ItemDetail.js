@@ -14,7 +14,7 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
         console.log('agregue al carrito: ', quantity)
         
         addItem({ id, title, price, quantity})
-        setNotification('error',`Se agrego al carrito ${quantity} ${title}`, 5)
+        setNotification('error',`Se agregó al carrito ${quantity} ${title}`, 5)
     }
 
     return (

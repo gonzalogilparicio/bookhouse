@@ -1,4 +1,5 @@
 import { useState, createContext } from 'react'
+import './Notification.css'
 
 const Notification = ({ type, message }) => {
 
@@ -7,7 +8,8 @@ const Notification = ({ type, message }) => {
     }
 
     return (
-      <div className={type === 'success' ? 'alert alert-success' : 'alert alert-danger '} style={{position:"absolute", bottom:"0px", right:"20px", padding:'10px 20px 10px 20px', fontSize:"16px"}}>
+      // <div className={type === 'success' ? 'alert alert-success' : 'alert alert-danger '} style={{position:"absolute", bottom:"0px", right:"20px", padding:'10px 20px 10px 20px', fontSize:"16px", backgroundColor: '#71B26D', color:'white'}}>
+      <div className='notificationToast'>
         {message}
       </div>
     )
