@@ -9,7 +9,7 @@ import { getProducts } from '../../services/firebase/firestore/products'
 import { Link, NavLink } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting, color }) => {
-    useTitle('Todos los productos', [])
+    useTitle('Bookhouse', [])
 
     const { categoryId } = useParams()
 
