@@ -36,7 +36,7 @@ const CartList = ({ cart }) => {
                                 <h5 className="mb-0">Total</h5>
                             </div>
                             <div className="card-body" style={{ color: 'black !important' }}>
-                                ${total}
+                                <strong>${total}</strong>
                             </div>
                             <Link to='/checkout' className="ButtonLimpiarCarritoYRealizarCompra">Realizar compra</Link>
                         </div>

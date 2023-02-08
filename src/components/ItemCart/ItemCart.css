@@ -2,5 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 70px !important;
+    padding-left: 80px !important;
+    
+}
+
+.ButtonTrash {
+    border: none;
+    background-color: white;
+}
+
+.CartImgAndTitle {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.CartImgAndTitle img {
+    margin: auto;
+    width: 120px;
 }
