@@ -28,6 +28,11 @@
     animation: lds-dual-ring 1.2s linear infinite;
 }
 
+.ProductoNoExiste {
+    margin-top: 100px;
+    font-size: 35px;
+}
+
 @keyframes lds-dual-ring {
     0% {
         transform: rotate(0deg);

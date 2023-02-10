@@ -1,4 +1,4 @@
-import { addDoc, getDocs, writeBatch, query, collection, where, documentId } from "firebase/firestore"
+import { addDoc, getDocs, writeBatch, query, collection, where, documentId, serverTimestamp } from "firebase/firestore"
 import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { useNavigate, Link } from "react-router-dom"
@@ -8,16 +8,13 @@ import './Checkout.css'
 
 const Checkout = () => {
     const setNotification = useContext(NotificationContext)
-
     const { cart, total, clearCart } = useContext(CartContext)
     const [orderId, setOrderId] = useState('')
     const [loading, setLoading] = useState(false)
-
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [email2, setEmail2] = useState('')
-
     const navigate = useNavigate()
 
     const createOrder = async () => {
@@ -30,19 +27,16 @@ const Checkout = () => {
                     email
                 },
                 items: cart,
-                total
+                total,
+                date: serverTimestamp(),
+                status: "Generado"
             }
 
             const batch = writeBatch(db)
-
             const ids = cart.map(prod => prod.id)
-            
-
             const prodRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
-
             const prodAdded = await getDocs(prodRef)
             const { docs } = prodAdded
-
             const outOfStock = []
 
             docs.forEach(doc => {
@@ -61,14 +55,14 @@ const Checkout = () => {
             })
 
             if (outOfStock.length === 0) {
-                await batch.commit()                
+                await batch.commit()
                 const orderRef = collection(db, 'orders')
                 const orderAdded = await addDoc(orderRef, objOrder)
                 const { id } = orderAdded
                 setOrderId(id)
-                clearCart()                
+                clearCart()
             } else {
-                console.error('productos fuera de stock')
+                setNotification('error', 'Productos fuera de stock', 4)
             }
         } catch (error) {
             console.error(error)
@@ -95,7 +89,6 @@ const Checkout = () => {
                     <Link to='/'><p style={{ fontSize: '20px', marginTop: '90px', color: 'black', textDecoration: 'none' }} >Volver al inicio</p></Link>
                 </div>
             </div>
-
         )
     }
 
@@ -111,13 +104,12 @@ const Checkout = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name === '' || email === '' || phone === '' || email2 === '') {
-            setNotification('error', `Todos los campos deben estar completos para poder finalizar su compra`, 5);
+            setNotification('error', `Todos los campos deben estar completos para finalizar su compra`, 5);
         } else if (email != email2) {
             setNotification('error', `Los mails no coinciden`, 5);
         } else {
             createOrder();
         }
-
     };
 
     return (
@@ -144,8 +136,6 @@ const Checkout = () => {
                     <button onClick={handleSubmit} type="submit" className="ButtonGenerarOrden">Generar orden</button>
                 </form>
             </div>
-
-
         </div>
     )
 }

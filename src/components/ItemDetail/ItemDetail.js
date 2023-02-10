@@ -5,14 +5,13 @@ import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import { NotificationContext } from '../../notification/NotificationService'
 
-
 const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghouse, price, stock }) => {
     const { addItem, isInCart } = useContext(CartContext)
     const setNotification = useContext(NotificationContext)
 
-    const handleOnAdd = (quantity) => {        
-        addItem({ id, title, price, quantity, img})
-        setNotification('error',`Se agregó al carrito ${quantity} ${title}`, 5)
+    const handleOnAdd = (quantity) => {
+        addItem({ id, title, price, quantity, img })
+        setNotification('error', `Se agregó al carrito ${quantity} ${title}`, 5)
     }
 
     return (
@@ -39,15 +38,15 @@ const ItemDetail = ({ id, title, author, img, pages, ISBN, review, publishinghou
                     </p>
                 </section>
                 <div className='ItemDetailCounter'>
-                <footer className='ItemFooter'>
-                {
-                    isInCart(id) ? (
-                        <Link to='/cart'><button className='ButtonTerminarCompra'>Terminar compra</button></Link>
-                    ) : (
-                        <ItemCount stock={stock} onAdd={handleOnAdd} />
-                    )
-                }
-            </footer>
+                    <footer className='ItemFooter'>
+                        {
+                            isInCart(id) ? (
+                                <Link to='/cart'><button className='ButtonTerminarCompra'>Terminar compra</button></Link>
+                            ) : (
+                                <ItemCount stock={stock} onAdd={handleOnAdd} />
+                            )
+                        }
+                    </footer>
                 </div>
                 <h4 className='ItemDetailPublishingHouse'>
                     <span>Editorial:</span>{publishinghouse}

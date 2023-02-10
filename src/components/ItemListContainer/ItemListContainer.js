@@ -6,15 +6,12 @@ import { useParams } from 'react-router-dom'
 import { useAsync } from '../../hooks/useAsync'
 import { useTitle } from '../../hooks/useTitle'
 import { getProducts } from '../../services/firebase/firestore/products'
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting, color }) => {
     useTitle('Bookhouse', [])
-
     const { categoryId } = useParams()
-
     const getProductsWithCategory = () => getProducts(categoryId)
-
     const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
 
     const rejectApi = () => {
@@ -40,7 +37,6 @@ const ItemListContainer = ({ greeting, color }) => {
     }
 
     if (error) {
-
         rejectApi()
         return (
             <div>
@@ -62,9 +58,6 @@ const ItemListContainer = ({ greeting, color }) => {
             <ItemList products={products} />
         </div>
     )
-
 }
-
-
 
 export default ItemListContainer

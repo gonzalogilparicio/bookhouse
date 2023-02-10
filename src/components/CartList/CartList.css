@@ -1,13 +1,13 @@
 .btn-del {
     border: 2px solid;
     border-radius: 8px;
-    color:white;
+    color: white;
     font-size: 16px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom:8px;
+    margin-bottom: 8px;
     background: #f8b629;
-    cursor:pointer;
+    cursor: pointer;
     font-family: 'Roboto', sans-serif;
 }
 

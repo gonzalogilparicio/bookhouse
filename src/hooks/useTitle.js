@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 
-export const useTitle = (title, dependecies) => {
-    if(!Array.isArray(dependecies)) {
+export const useTitle = (title, dependencies) => {
+    if (!Array.isArray(dependencies)) {
         console.error('No se paso un Array como dependecias al useTitle')
-        dependecies = []
+        dependencies = []
     }
-    
+
     useEffect(() => {
-        document.title = title 
-    }, dependecies) //eslint-disable-line
+        document.title = title
+    }, dependencies) //eslint-disable-line
 }

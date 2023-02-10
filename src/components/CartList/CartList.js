@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import './CartList.css'
 
 const CartList = ({ cart }) => {
-
     const { total, clearCart } = useContext(CartContext)
 
     return (
@@ -26,8 +25,6 @@ const CartList = ({ cart }) => {
                             <button type="button" className="ButtonLimpiarCarritoYRealizarCompra" title="Vaciar carrito" onClick={() => clearCart()}>
                                 Limpiar carrito
                             </button>
-
-
                         </div>
                     </div>
                     <div className="col-md-4">
@@ -40,13 +37,10 @@ const CartList = ({ cart }) => {
                             </div>
                             <Link to='/checkout' className="ButtonLimpiarCarritoYRealizarCompra">Realizar compra</Link>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
-
     )
 }
 

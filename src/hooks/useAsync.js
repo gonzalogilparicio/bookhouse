@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react'
 
-export const useAsync = (asyncFunc, dependecies = []) => {
+export const useAsync = (asyncFunc, dependencies = []) => {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    if(!Array.isArray(dependecies)) {
+    if (!Array.isArray(dependencies)) {
         console.error('No se paso un Array como dependencias al useAsync')
-        dependecies = []
+        dependencies = []
     }
 
     useEffect(() => {
         setLoading(true)
-
         asyncFunc()
             .then(data => {
                 setData(data)
@@ -23,11 +22,11 @@ export const useAsync = (asyncFunc, dependecies = []) => {
             .finally(() => {
                 setLoading(false)
             })
-    }, dependecies) //eslint-disable-line
+    }, dependencies) //eslint-disable-line
 
     return {
         data,
-        error,
-        loading
+        loading,
+        error
     }
 }

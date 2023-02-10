@@ -3,55 +3,52 @@ import { useState, createContext } from "react"
 export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([])
-    const addItem = (productToAdd) => {
-        if(!isInCart(productToAdd.id)) {
-          setCart(prev => {            
-            return [...prev, productToAdd]
-          })
-        } else {
-          console.error('YA ESTA AGREGADO')
-        }
-    }
-
-    const isInCart = (id) => cart.some(prod => id === prod.id)
-
-    const getTotalQuantity = () => {
-      let accu = 0
-
-      cart.forEach(prod => {
-        accu += prod.quantity
+  const [cart, setCart] = useState([])
+  const addItem = (productToAdd) => {
+    if (!isInCart(productToAdd.id)) {
+      setCart(prev => {
+        return [...prev, productToAdd]
       })
-
-      return accu
+    } else {
+      console.error('YA ESTA AGREGADO')
     }
+  }
 
-    const getTotal = () => {
-      let total = 0
+  const isInCart = (id) => cart.some(prod => id === prod.id)
 
-      cart.forEach(prod => {
-        total += prod.quantity * prod.price
-      })
+  const getTotalQuantity = () => {
+    let accu = 0
+    cart.forEach(prod => {
+      accu += prod.quantity
+    })
 
-      return total
-    }
+    return accu
+  }
 
-    const totalQuantity = getTotalQuantity()
+  const getTotal = () => {
+    let total = 0
+    cart.forEach(prod => {
+      total += prod.quantity * prod.price
+    })
 
-    const total = getTotal()
+    return total
+  }
 
-    const clearCart = () => {
-      setCart([])
-    }
+  const totalQuantity = getTotalQuantity()
+  const total = getTotal()
 
-    const removeItemCart = (id) => {
-      const cartNew = cart.filter(prod => prod.id !== id)
-      setCart(cartNew)
-    }
+  const clearCart = () => {
+    setCart([])
+  }
 
-    return (
-        <CartContext.Provider value={{ cart, addItem, isInCart, totalQuantity, total, clearCart, removeItemCart}}>
-            { children }
-        </CartContext.Provider>
-    )
+  const removeItemCart = (id) => {
+    const cartNew = cart.filter(prod => prod.id !== id)
+    setCart(cartNew)
+  }
+
+  return (
+    <CartContext.Provider value={{ cart, addItem, isInCart, totalQuantity, total, clearCart, removeItemCart }}>
+      {children}
+    </CartContext.Provider>
+  )
 }

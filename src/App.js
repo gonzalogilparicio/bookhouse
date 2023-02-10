@@ -12,7 +12,7 @@ function App() {
         <CartProvider>
           <BrowserRouter>
             <Navbar />
-            <AppRoutes/>
+            <AppRoutes />
           </BrowserRouter>
         </CartProvider>
       </NotificationProvider>

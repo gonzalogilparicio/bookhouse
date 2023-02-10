@@ -3,26 +3,19 @@ import { CartContext } from "../../context/CartContext"
 import './ItemCart.css'
 
 const ItemCart = ({ id, title, quantity, price, img }) => {
-
     const { removeItemCart } = useContext(CartContext)
 
     return (
-
         <div className="row align-items-center" style={{ color: "black" }}>
-
             <div className="col-lg-3 col-md-12 mb-4 mb-lg-0 CartImgAndTitle">
-
                 <img src={img} alt={title} />
-
                 <p><strong>{title}</strong></p>
             </div>
-
             <div className="col-lg-5 DivCantidadPrecioSubtotal">
                 <p><strong><span style={{ color: "black" }}>Cantidad: </span></strong><span style={{ color: "black" }}>{quantity}</span> </p>
                 <p><strong><span style={{ color: "black" }}>Precio: </span></strong><span style={{ color: "black" }}>${price}</span> </p>
                 <p><strong><span style={{ color: "black", marginRight: '24px' }}>Subtotal: </span></strong><span style={{ color: "black" }}>${price * quantity}</span> </p>
             </div>
-
             <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <button type="button" className="ButtonTrash"
                     title="Eliminar" onClick={() => removeItemCart(id)}>

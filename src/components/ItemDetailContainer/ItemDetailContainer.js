@@ -1,34 +1,23 @@
 import './ItemDetailContainer.css'
-import { useState, useEffect } from 'react'
-import { getProductById } from '../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-import { getDoc, doc } from 'firebase/firestore'
-import { db } from '../../services/firebase/firebaseConfig'
+import { getProductsById } from '../../services/firebase/firestore/products'
+import { useAsync } from '../../hooks/useAsync'
+import { Link } from "react-router-dom"
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState({})
-    const [loading, setLoading] = useState(true)
-
     const { productId } = useParams()
+    const getProduct = () => getProductsById(productId)
+    const { data: product, loading, error } = useAsync(getProduct, [productId])
 
-
-    useEffect(() => {
-        setLoading(true)
-
-        const docRef = doc(db, 'products', productId)
-
-        getDoc(docRef).then(doc => {
-            const dataProduct = doc.data()
-            const productAdapted = { id: doc.id, ...dataProduct }
-            setProduct(productAdapted)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })
-
-    }, [productId])
+    if (error) {
+        return (
+            <div>
+                <h4 className="H4">Algo falló al cargar el producto, volvé a intentarlo</h4>
+                <Link to='/'><p style={{ marginTop: '40px', color: 'black', textDecoration: 'none' }} >Volver al inicio</p></Link>
+            </div>
+        );
+    }
 
     if (loading) {
         return (
@@ -39,8 +28,17 @@ const ItemDetailContainer = () => {
         );
     }
 
+    if (product == null) {
+        return (
+            <div>
+                <h4 className="ProductoNoExiste">El producto no existe</h4>
+                <Link to='/'><p style={{ marginTop: '40px', color: 'black', textDecoration: 'none' }} >Volver al inicio</p></Link>
+            </div>
+        );
+    }
+
     return (
-        <div className='ItemDetailContainer' >
+        <div className='ItemDetailContainer'>
             <ItemDetail {...product} />
         </div>
     )
