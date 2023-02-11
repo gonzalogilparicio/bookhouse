@@ -1,4 +1,4 @@
-## Tienda de libros BOOKHOUSE
+## Tienda virtual de libros BOOKHOUSE
 
 ## Instalación
 
