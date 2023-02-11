@@ -1,7 +1,7 @@
 import { addDoc, getDocs, writeBatch, query, collection, where, documentId, serverTimestamp } from "firebase/firestore"
 import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { db } from "../../services/firebase/firebaseConfig"
 import { NotificationContext } from "../../notification/NotificationService"
 import './Checkout.css'
@@ -14,8 +14,7 @@ const Checkout = () => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
-    const [email2, setEmail2] = useState('')
-    const navigate = useNavigate()
+    const [email2, setEmail2] = useState('')    
 
     const createOrder = async () => {
         setLoading(true)
@@ -105,7 +104,7 @@ const Checkout = () => {
         e.preventDefault();
         if (name === '' || email === '' || phone === '' || email2 === '') {
             setNotification('error', `Todos los campos deben estar completos para finalizar su compra`, 5);
-        } else if (email != email2) {
+        } else if (email !== email2) {
             setNotification('error', `Los mails no coinciden`, 5);
         } else {
             createOrder();
